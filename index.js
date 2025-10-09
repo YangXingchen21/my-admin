@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import config from './config/config.js'
-import UserRoute from './routes/UserRoute.js'
+import UserRoute from './routes/userRoute.js'
 const app=express()
 
 //express内置中间件函数，用于解析JSON格式的请求体数据
