@@ -1,5 +1,11 @@
 import {getUserByUsername} from '../models/userModel.js'
 export const getUsers=async()=>await UserModel.findAll();
+/**
+ * 登录
+ * @param {string} username - 用户名 
+ * @param {string} password - 密码
+ * @returns {object} 包含成功与否信息的对象
+ */
 export const doLogin=async(username,password)=>{
     const users=await getUserByUsername(username)
     if(users.rowCount==0){
