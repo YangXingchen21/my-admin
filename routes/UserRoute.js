@@ -1,5 +1,7 @@
 import express from 'express'
-import {getUsers} from '../controllers/userController.js'
+import {doLogin} from '../controllers/userController.js'
 const router=express.Router()
-router.get('/',getUsers)
+//api/users
+
+router.post('/login',doLogin)
 export default router

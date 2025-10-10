@@ -1,5 +1,17 @@
 import * as UserService from '../services/userService.js'
-export const getUsers=async (req,res)=>{
-    const users= await UserService.getUsers();
-    res.json(users.rows);
+
+export const doLogin=async (req,res)=>{
+    try {
+        const {username,password}=req.body
+        const result=await UserService.doLogin(username,password)
+        const {success,message}=result
+        if(success){
+            res.status(200).json(result)
+        }else{
+            res.status(401).json(result)
+        }
+    } catch (error) {
+        res.status(400).json({success:false,message:error.message})
+    }
+    
 }
