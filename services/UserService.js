@@ -1,4 +1,5 @@
 import {getUserByUsername,createUser} from '../models/userModel.js'
+import bcrypt from 'bcrypt'
 
 /**
  * 登录
@@ -20,6 +21,18 @@ export const doLogin=async(username,password)=>{
     }
 }
 
-export const doRegister=async(username,email,password)=>{
-    return await createUser(username,email,password)
+export const doRegister=async(username,password)=>{
+    //判断是否存在同名用户
+    const user=await getUserByUsername(username)
+    if(user.rowCount>0){
+        return {success:false,message:'用户已存在'}
+    }
+    //密码加密
+    password=bcrypt.hashSync(password,10)
+    const data=await createUser(username,password)
+    return {
+        success:true,
+        message:'注册成功',
+        data
+    }
 }

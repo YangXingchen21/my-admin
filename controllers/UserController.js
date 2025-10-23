@@ -19,7 +19,12 @@ export const doLogin=async (req,res)=>{
 }
 
 export const register=async(req,res)=>{
-    const {username,email,password}=req.body
-    const result=await UserService.doRegister(username,email,password)
-    res.status(200).json(result.rows[0])
+    const {username,password}=req.body
+    const result=await UserService.doRegister(username,password)
+    if(result.success){
+        res.status(200).json(result.data.rows[0])
+    }else{
+        res.status(401).json(result)
+    }
+    
 }

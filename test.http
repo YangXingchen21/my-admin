@@ -14,7 +14,7 @@ post {{url}}/api/users/register
 {{json}}
 
 {
-    "username":"TEST1",
-    "email":"1@email.com",
-    "password":"test1"
+    "username":"TEST2",
+    "email":"3@email.com",
+    "password":"tes12323"
 }
