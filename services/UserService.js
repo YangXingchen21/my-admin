@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv/config'
 //后续要迁移到配置文件中
-const PRIVATE_KEY=process.env.TOKEN_PRIVATE_KEY
+const PRIVATE_KEY=process.env.JWT_SECRET
 /**
  * 登录
  * @param {string} username - 用户名 
@@ -13,7 +13,7 @@ const PRIVATE_KEY=process.env.TOKEN_PRIVATE_KEY
 export const doLogin=async(username,password)=>{
     const users=await getUserByUsername(username)
     if(users.rowCount==0){
-        return {success:false,message:'用户不存在'}
+        return {success:false,message:'用户不存在，请先注册'}
     }else if(users.rowCount>1){
         return {success:false,message:'用户数据异常'}
     }
@@ -24,11 +24,16 @@ export const doLogin=async(username,password)=>{
         return {success:false,message:'密码错误，登录失败'}
     }
     //生成token(第二个参数应该写在环境变量里)
-    const token=jwt.sign({id:user.id},PRIVATE_KEY)
+    const token=jwt.sign({id:user.id},PRIVATE_KEY,{expiresIn:'12h'})
     return {success:true,message:'登录成功',token}
    
 }
-
+/**
+ * 注册
+ * @param {*} username 
+ * @param {*} password 
+ * @returns 
+ */
 export const doRegister=async(username,password)=>{
     //判断是否存在同名用户
     const user=await getUserByUsername(username)

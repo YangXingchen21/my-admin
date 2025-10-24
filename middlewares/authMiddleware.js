@@ -1,7 +1,7 @@
 import { getUserById } from "../models/userModel.js"
 import jwt from 'jsonwebtoken'
 
-const PRIVATE_KEY=process.env.TOKEN_PRIVATE_KEY
+const PRIVATE_KEY=process.env.JWT_SECRET
 export const authMiddleware=async(req,res,next)=>{
     const token=String(req.headers.authorization)
     const id=jwt.verify(token,PRIVATE_KEY).id
