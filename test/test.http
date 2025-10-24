@@ -14,11 +14,13 @@ post {{url}}/api/users/register
 {{json}}
 
 {
-    "username":"user_test_001",
-    "email":"test_001@email.com",
-    "password":"1234567890"
+    "username":"user_test_002",
+    "email":"test_002@email.com",
+    "password":"12345678901"
 }
 
 ### 测试获取信息
 get {{url}}/api/users/testinfo
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3NzFjZDE4LTBhZjktNDA1Zi1iYTU3LWU2MDlkNTdmZmYwMyIsImlhdCI6MTc2MTI2ODgzMH0.RnLaHsKaGLC64upiED6GvCSar-UvLjnHg5g8o7PE3A4
+
+### 获取公钥

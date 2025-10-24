@@ -40,6 +40,7 @@ export const doRegister=async(username,password)=>{
     if(user.rowCount>0){
         return {success:false,message:'用户已存在'}
     }
+    //前端传输来的密码用私钥解密
     //密码加密
     password=bcrypt.hashSync(password,10)
     const data=await createUser(username,password)

@@ -1,0 +1,5 @@
+@url=http://localhost:5066
+@json=Content-Type: application/json
+
+get {{url}}/api/key/get-public-key
+

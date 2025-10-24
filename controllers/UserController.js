@@ -1,5 +1,5 @@
 import * as UserService from '../services/userService.js'
-
+import { ResponseHandler } from '../utils/resultUtil.js'
 export const doLogin=async (req,res)=>{
     try {
         const {username,password}=req.body
@@ -22,9 +22,11 @@ export const register=async(req,res)=>{
     const {username,password}=req.body
     const result=await UserService.doRegister(username,password)
     if(result.success){
-        res.status(200).json(result.data.rows[0])
+        
+        ResponseHandler.success(res,result.data.rows[0],'注册成功')
     }else{
-        res.status(401).json(result)
+        ResponseHandler.error(res,undefined,result.message)
+        
     }
     
 }
