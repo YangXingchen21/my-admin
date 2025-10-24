@@ -5,8 +5,8 @@ post {{url}}/api/users/login
 {{json}}
 
 {
-    "username":"yangxingchen",
-    "password":"123456yxc"
+    "username":"user_test_001",
+    "password":"1234567890"
 }
 
 ### 注册
@@ -14,7 +14,11 @@ post {{url}}/api/users/register
 {{json}}
 
 {
-    "username":"TEST2",
-    "email":"3@email.com",
-    "password":"tes12323"
+    "username":"user_test_001",
+    "email":"test_001@email.com",
+    "password":"1234567890"
 }
+
+### 测试获取信息
+get {{url}}/api/users/testinfo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3NzFjZDE4LTBhZjktNDA1Zi1iYTU3LWU2MDlkNTdmZmYwMyIsImlhdCI6MTc2MTI2ODgzMH0.RnLaHsKaGLC64upiED6GvCSar-UvLjnHg5g8o7PE3A4

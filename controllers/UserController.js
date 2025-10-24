@@ -28,3 +28,8 @@ export const register=async(req,res)=>{
     }
     
 }
+
+export const test = async(req,res)=>{
+    const result = await UserService.doTest(req)
+    res.status(200).json(result)
+}
